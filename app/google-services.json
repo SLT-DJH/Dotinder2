@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "296334758672",
+    "project_id": "dotinder-603e2",
+    "storage_bucket": "dotinder-603e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296334758672:android:23cf96a2ad438865e14b95",
+        "android_client_info": {
+          "package_name": "com.jinhyun.dotinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296334758672-gkn04f6edj0r94pdnnnce0821a5jml6f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jinhyun.dotinder",
+            "certificate_hash": "51dce64d266d53385283dd8345aa8ab450d75a26"
+          }
+        },
+        {
+          "client_id": "296334758672-rj12q4nqt50ru0ih59c4f4mk79q4b15l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwq9VidcXnMpnrojbN6PFh2JpySAnxKhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296334758672-rj12q4nqt50ru0ih59c4f4mk79q4b15l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

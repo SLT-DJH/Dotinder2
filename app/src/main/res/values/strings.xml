@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Dotinder</string>
+
+    <string name="login">LogIn</string>
+    <string name="registration">Registration</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <string name="sign_up_success">sign up succeed!</string>
+    <string name="sign_up_failed">sign up failed...</string>
+</resources>
