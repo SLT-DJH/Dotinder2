@@ -5,7 +5,23 @@
     <string name="registration">Registration</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="name">Name</string>
 
     <string name="sign_up_success">sign up succeed!</string>
     <string name="sign_up_failed">sign up failed...</string>
+
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+
+    <string name="request_email_pw">Please enter text in email/pw</string>
+    <string name="request_name">Please enter text in name</string>
+    <string name="request_gender">Please select your gender</string>
+
+    <string name="register_succeed">Registration Succeed</string>
+    <string name="register_failed">Registration Failed</string>
+
+    <string name="dislike">Dislike</string>
+    <string name="like">Like</string>
+
+    <string name="sign_out">Sign Out</string>
 </resources>

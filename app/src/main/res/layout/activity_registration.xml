@@ -4,7 +4,27 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/et_email.regi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_name"
+        android:hint="@string/name"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rg_gender">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/male"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/female"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/et_email_regi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
