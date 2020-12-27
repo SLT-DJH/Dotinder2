@@ -7,42 +7,36 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    var al = ArrayList<String>()
-    var arrayAdapter: ArrayAdapter<String>? = null
-    var i: Int = 0
+    val TAG = "MainActivity"
+
+    var cards = ArrayList<Cards>()
+    val itemAdapter = ItemAdapter(cards)
 
     val mAuth = FirebaseAuth.getInstance()
-
+    val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        al.add("php")
-        al.add("c")
-        al.add("python")
-        al.add("java")
-        al.add("html")
-        al.add("c++")
-        al.add("css")
-        al.add("javascript")
-
-        arrayAdapter = ArrayAdapter(this, R.layout.item, R.id.helloText, al)
+        checkUserGender()
 
         val flingContainer : SwipeFlingAdapterView = findViewById(R.id.frame)
 
-        flingContainer.adapter = arrayAdapter
+        flingContainer.adapter = itemAdapter
         flingContainer.setFlingListener(object  : SwipeFlingAdapterView.onFlingListener{
             override fun removeFirstObjectInAdapter() {
                 Log.d("LIST", "removed object!")
-                al.removeAt(0)
-                arrayAdapter?.notifyDataSetChanged()
+                cards.removeAt(0)
+                itemAdapter.notifyDataSetChanged()
             }
 
             override fun onLeftCardExit(p0: Any?) {
@@ -54,12 +48,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onAdapterAboutToEmpty(p0: Int) {
-                val a = "XML "
-                val b = i.toString()
-                al.add(a+b)
-                arrayAdapter?.notifyDataSetChanged()
-                Log.d("LIST", "notified")
-                i++
 
             }
 
@@ -89,5 +77,40 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+    }
+
+    fun checkUserGender(){
+        var mgender = ""
+
+        //check if Male
+        db.collection("Male").document(mAuth.uid.toString()).get().addOnSuccessListener { it ->
+            if (it.data != null){
+                mgender = "Male"
+                logGender(mgender)
+                getOppositeGenderUsers("Female")
+            }else{
+                mgender = "Female"
+                logGender(mgender)
+                getOppositeGenderUsers("Male")
+            }
+        }
+    }
+
+    fun logGender(gender : String){
+        Log.d(TAG, "log gender : $gender")
+    }
+
+    fun getOppositeGenderUsers(oppoisitegender : String){
+        db.collection(oppoisitegender).addSnapshotListener { value, error ->
+            if (error != null) {
+                Log.d(TAG, "getOppositeGenderUsers failed.", error)
+                return@addSnapshotListener
+            }
+
+            for (doc in value!!){
+                cards.add(Cards(doc.getString("uid").toString(), doc.getString("name").toString()))
+                itemAdapter.notifyDataSetChanged()
+            }
+        }
     }
 }

@@ -69,7 +69,8 @@ class RegistrationActivity : AppCompatActivity() {
                         "name" to name,
                         "email" to email,
                         "password" to password,
-                        "uid" to userId
+                        "uid" to userId,
+                        "gender" to rbtn.text.toString()
                     )
                     db.collection(rbtn.text.toString()).document(userId).set(userinfo).addOnSuccessListener {
                         Toast.makeText(this, R.string.register_succeed, Toast.LENGTH_SHORT).show()
